@@ -43,6 +43,7 @@ def _display_info(info_list, info_dict, batch_size=10):
     Returns:
         None.
     """
+
     limit = len(info_list)
     idx = 0
     count = 0
@@ -89,6 +90,7 @@ def _parse_data(data):
     Returns:
         tuple: Tuple consisting of two collections. The first a list of vendor names, the second a dictonary of vendor locations organized by vendor name.
     """
+
     print("Parsing {count} data elements...".format(count=len(data)))
     info_list = list()
     info_dict = dict()
@@ -117,6 +119,7 @@ def _gather_data(url, params):
     Returns:
         dict: Data dictionary.
     """
+
     query = ''
 
     for idx, key in enumerate(params.keys()):
@@ -125,7 +128,7 @@ def _gather_data(url, params):
         else:
             query += "&{key}={val}".format(key=key, val=params[key])
 
-        res = requests.get(url, params=query)
+    res = requests.get(url, params=query)
 
     print("Fetching data from {source}".format(source=res.url))
 
