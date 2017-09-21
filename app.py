@@ -7,6 +7,15 @@ import requests
 
 
 def _getchar():
+    """Reads character from stdin.
+
+    Args:
+        None.
+
+    Returns:
+        ch (str): Character from stdin.
+    """
+
     import tty
     import termios
     import sys
@@ -25,6 +34,15 @@ def _getchar():
 
 
 def _display_info(info_list, info_dict, batch_size=10):
+    """Displays vendor data.
+
+    Args:
+        info_list (list): List of vendor names.
+        info_dict (dict): Dictionary containing vendor locations, organized by vendor name.
+
+    Returns:
+        None.
+    """
     limit = len(info_list)
     idx = 0
     count = 0
@@ -63,6 +81,14 @@ def _display_info(info_list, info_dict, batch_size=10):
 
 
 def _parse_data(data):
+    """Parses data dictonary.
+
+    Args:
+        data (dict): Data dictionary.
+
+    Returns:
+        tuple: Tuple consisting of two collections. The first a list of vendor names, the second a dictonary of vendor locations organized by vendor name.
+    """
     print("Parsing {count} data elements...".format(count=len(data)))
     info_list = list()
     info_dict = dict()
@@ -82,6 +108,15 @@ def _parse_data(data):
 
 
 def _gather_data(url, params):
+    """Fetches data from target API.
+
+    Args:
+        url (str): Base url.
+        params (dict): Query key-value arguments.
+
+    Returns:
+        dict: Data dictionary.
+    """
     query = ''
 
     for idx, key in enumerate(params.keys()):
@@ -102,6 +137,15 @@ def _gather_data(url, params):
 
 
 def _main(args):
+    """Application entry point.
+
+    Args:
+        args (argparse): Command-line options.
+
+    Returns:
+        None.
+    """
+
     target = None
     day = None
     time = None
